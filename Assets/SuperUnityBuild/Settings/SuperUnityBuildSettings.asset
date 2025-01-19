@@ -78,7 +78,7 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: 
+    selectedKeyChain: Debug/WebGL/Player/IL2CPP
   _preBuildActions:
     buildActions:
     - {fileID: 3003541715860808857}
@@ -105,10 +105,10 @@ MonoBehaviour:
   filter:
     condition: 0
     clauses: []
-  pathToButlerExe: 
-  nameOfItchUser: 
-  nameOfItchGame: 
-  useGeneratedBuildVersion: 0
+  pathToButlerExe: Assets\Butler\butler.exe
+  nameOfItchUser: Rainbowblood
+  nameOfItchGame: Game Jam Pro Tartu 25
+  useGeneratedBuildVersion: 1
   channelName: $PLATFORM-$ARCHITECTURE
   showUploadProgress: 1
   itchChannelOverride: 
