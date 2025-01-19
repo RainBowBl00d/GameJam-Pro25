@@ -15,11 +15,11 @@ MonoBehaviour:
   _basicSettings:
     baseBuildFolder: Builds
     buildPath: $VERSION/$RELEASE_TYPE/$PLATFORM/$TARGET/$SCRIPTING_BACKEND
-    openFolderPostBuild: 0
+    openFolderPostBuild: 1
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
-    buildCounter: 7
-    buildVersion: 1.0.0.7
+    buildCounter: 0
+    buildVersion: 
     versionTemplate: 1.0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -31,15 +31,13 @@ MonoBehaviour:
       productName: GameJam Pro 25
       syncAppNameWithProduct: 1
       appBuildName: GameJam Pro 25
-      buildOptions: 1
+      buildOptions: 0
       customDefines: 
       sceneList:
-        releaseScenes:
-        - fileGUID: 8c9cfa26abfee488c85f1582747f6a02
-          sceneActive: 1
+        releaseScenes: []
   _platformList:
     platforms:
-    - {fileID: 7180452829077207935}
+    - {fileID: 6157346644253036337}
   _projectConfigurations:
     configSet:
       _Buckets: ffffffffffffffffffffffff0200000003000000ffffffffffffffff
@@ -80,14 +78,14 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Debug/WebGL/Player/IL2CPP
+    selectedKeyChain: 
   _preBuildActions:
     buildActions:
-    - {fileID: 4897960641373869001}
+    - {fileID: 3003541715860808857}
   _postBuildActions:
     buildActions:
-    - {fileID: 4350088942811379219}
---- !u!114 &4350088942811379219
+    - {fileID: 2009643749676829822}
+--- !u!114 &2009643749676829822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,14 +105,14 @@ MonoBehaviour:
   filter:
     condition: 0
     clauses: []
-  pathToButlerExe: C:\Users\Rainb\Butler\butler.exe
-  nameOfItchUser: Rainbowblood
-  nameOfItchGame: game-jam-pro-tartu-25
-  useGeneratedBuildVersion: 1
+  pathToButlerExe: 
+  nameOfItchUser: 
+  nameOfItchGame: 
+  useGeneratedBuildVersion: 0
   channelName: $PLATFORM-$ARCHITECTURE
   showUploadProgress: 1
   itchChannelOverride: 
---- !u!114 &4897960641373869001
+--- !u!114 &3003541715860808857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +135,7 @@ MonoBehaviour:
   inputPath: $BUILDPATH
   outputPath: $BUILDPATH
   outputFileName: $PRODUCT_NAME-$RELEASE_TYPE-$YEAR_$MONTH_$DAY.zip
---- !u!114 &7180452829077207935
+--- !u!114 &6157346644253036337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
