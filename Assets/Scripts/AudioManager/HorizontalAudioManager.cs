@@ -59,6 +59,17 @@ public class HorizontalAudioManager : MonoBehaviour{
         }
     }
 
+    public void setVolume(float volume)
+    {
+        foreach (GameState gameState in gameStateList)
+        {
+            foreach (Track track in gameState.trackList)
+            {
+                track.SetVolume(volume);
+            }
+        }
+    }
+
     void PlayRandomTrack(GameState gameState)
     {
         int choice = UnityEngine.Random.Range(0, gameState.trackList.Count);

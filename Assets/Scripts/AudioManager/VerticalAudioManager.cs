@@ -13,6 +13,7 @@ namespace AdaptiveAudio{
         public AudioPool audioPool;
         [HideInInspector]
         public AnimationCurve defaultCurve;
+        private float _volume = 1f;
 
         void Awake() {
             if (Instance == null){
@@ -34,13 +35,30 @@ namespace AdaptiveAudio{
             defaultCurve.postWrapMode = WrapMode.Clamp;
         }
 
-        public void Play(Song song, float time = 0f, bool loop = true, float volume = 1)
+        public void SetVolume(float volume)
+        {
+            _volume = volume;
+            {
+                foreach (Song s in audioPool.songlist)
+                {
+                    foreach (Layer l in s.layerList)
+                    {
+                        foreach (Track t in l.tracksList)
+                        {
+                            t.SetVolume(volume);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Play(Song song, float time = 0f, bool loop = true)
         {
             foreach (Song s in audioPool.songlist)
             {
                 if (song.Equals(s))
                 {
-                    song.Play(time, loop, volume);
+                    song.Play(time, loop, _volume);
                 }
                 else
                 {
@@ -49,11 +67,11 @@ namespace AdaptiveAudio{
             }
         }
 
-        public void Play(Layer layer, float time = 0f, bool loop = true, bool stopOtherLayers = false, float volume = 1)
+        public void Play(Layer layer, float time = 0f, bool loop = true, bool stopOtherLayers = false)
         {
             if (!stopOtherLayers)
             {
-                layer.Play(time, loop, volume);
+                layer.Play(time, loop, _volume);
             }
             else
             {
@@ -62,7 +80,7 @@ namespace AdaptiveAudio{
                     foreach (Layer l in s.layerList)
                     {
                         if (layer.Equals(l))
-                            layer.Play(time, loop, volume);
+                            layer.Play(time, loop, _volume);
                         else
                             layer.Stop();
                     }
@@ -70,11 +88,11 @@ namespace AdaptiveAudio{
             }
         }
 
-        public void Play(Track track, float time = 0f, bool loop = true, bool stopOthertracks = false, float volume = 1)
+        public void Play(Track track, float time = 0f, bool loop = true, bool stopOthertracks = false)
         {
             if (!stopOthertracks)
             {
-                track.Play(time, loop, volume);
+                track.Play(time, loop, _volume);
             }
             else
             {
@@ -85,7 +103,7 @@ namespace AdaptiveAudio{
                         foreach (Track t in l.tracksList)
                         {
                             if (track.Equals(t))
-                                track.Play(time, loop, volume);
+                                track.Play(time, loop, _volume);
                             else
                                 track.Stop();
                         }
@@ -155,30 +173,30 @@ namespace AdaptiveAudio{
             track.Resume(loop);
         }
 
-        public void FadeIn(Song song, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float volume = 1f, float time = 0f)
+        public void FadeIn(Song song, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float time = 0f)
         {
             foreach (Layer l in song.layerList)
             {
-                FadeIn(l, animationCurveType, loop, fadeDuration, volume, time);
+                FadeIn(l, animationCurveType, loop, fadeDuration, time);
             }
         }
 
-        public void FadeIn(Layer layer, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float volume = 1f, float time = 0f)
+        public void FadeIn(Layer layer, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float time = 0f)
         {
             foreach(Track t in layer.tracksList)
             {
-                FadeIn(t, animationCurveType, loop, fadeDuration, volume, time);
+                FadeIn(t, animationCurveType, loop, fadeDuration, time);
             }
         }
 
-        public void FadeIn(Track track, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float volume = 1f, float time = 0f)
+        public void FadeIn(Track track, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float time = 0f)
         {
             track.StopFadingOut();
             track.IsFadingIn = true;
-            StartCoroutine(FadeInStart(track, animationCurveType, loop, fadeDuration, volume, time));
+            StartCoroutine(FadeInStart(track, animationCurveType, loop, fadeDuration, time));
         }
 
-        private IEnumerator FadeInStart(Track track, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float volume = 1f, float time = 0f)
+        private IEnumerator FadeInStart(Track track, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float time = 0f)
         {
             float timer = 0f;
             float initialVolume = 0f;
@@ -189,7 +207,7 @@ namespace AdaptiveAudio{
             while (timer < fadeDuration && track.IsFadingIn)
             {
                 timer += Time.deltaTime;
-                track.AudioSource.volume = Mathf.Lerp(initialVolume, volume, animationCurveType.Evaluate(timer / fadeDuration));
+                track.AudioSource.volume = Mathf.Lerp(initialVolume, _volume, animationCurveType.Evaluate(timer / fadeDuration));
                 yield return null;
             }          
 
@@ -255,21 +273,21 @@ namespace AdaptiveAudio{
             }
         }
 
-        public void CrossFade(Track trackIn, Track trackOut, AnimationCurve animationCurveIn,  AnimationCurve animationCurveOut, bool loop = true, float fadeDuration = 3f, float volume = 1f, float time = 0f)
+        public void CrossFade(Track trackIn, Track trackOut, AnimationCurve animationCurveIn,  AnimationCurve animationCurveOut, bool loop = true, float fadeDuration = 3f, float time = 0f)
         {
-            FadeIn(trackIn, animationCurveIn, loop, fadeDuration, volume, time);
-            FadeOut(trackOut, animationCurveIn, fadeDuration);
+            FadeIn(trackIn, animationCurveIn, loop, fadeDuration, time);
+            FadeOut(trackOut, animationCurveOut, fadeDuration);
         }
 
-        public void CrossFade(Layer layerIn, Layer layerOut, AnimationCurve animationCurveIn, AnimationCurve animationCurveOut, bool loop = true, float fadeDuration = 3f, float volume = 1f, float time = 0f)
+        public void CrossFade(Layer layerIn, Layer layerOut, AnimationCurve animationCurveIn, AnimationCurve animationCurveOut, bool loop = true, float fadeDuration = 3f, float time = 0f)
         {
-            FadeIn(layerIn, animationCurveIn, loop, fadeDuration, volume, time);
+            FadeIn(layerIn, animationCurveIn, loop, fadeDuration, time);
             FadeOut(layerOut, animationCurveOut, fadeDuration);
         }
 
-        public void CrossFade(Song songIn, Song songOut, AnimationCurve animationCurveIn, AnimationCurve animationCurveOut, bool loop = true, float fadeDuration = 3f, float volume = 1f, float time = 0f)
+        public void CrossFade(Song songIn, Song songOut, AnimationCurve animationCurveIn, AnimationCurve animationCurveOut, bool loop = true, float fadeDuration = 3f, float time = 0f)
         {
-            FadeIn(songIn, animationCurveIn, loop, fadeDuration, volume, time);
+            FadeIn(songIn, animationCurveIn, loop, fadeDuration, time);
             FadeOut(songOut, animationCurveOut, fadeDuration);
         }
 
