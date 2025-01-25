@@ -1,28 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1757239053603400146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de0f7a04940394844a505e73c3eb8cec, type: 3}
-  m_Name: ZipFileOperation
-  m_EditorClassIdentifier: 
-  actionType: 1
-  actionName: ZipFileOperation
-  note: 
-  actionEnabled: 1
-  configureEditor: 0
-  filter:
-    condition: 0
-    clauses: []
-  inputPath: $BUILDPATH
-  outputPath: $BUILDPATH
-  outputFileName: $PRODUCT_NAME-$RELEASE_TYPE-$YEAR_$MONTH_$DAY.zip
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,37 +50,21 @@ MonoBehaviour:
         - fileGUID: 6cde78bc3367d4e4aa3c61590cce17bc
           sceneActive: 1
   _platformList:
-    platforms:
-    - {fileID: 6157346644253036337}
+    platforms: []
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffffffffffffffffffff0200000003000000ffffffffffffffff
-      _HashCodes: 20de535739f6d32775cc3a660d4e9934000000000000000000000000
-      _Next: ffffffff00000000ffffffff01000000000000000000000000000000
-      _Count: 4
-      _Version: 4
+      _Buckets: ffffffffffffffffffffffff
+      _HashCodes: 000000000000000000000000
+      _Next: 000000000000000000000000
+      _Count: 0
+      _Version: 0
       _FreeList: -1
       _FreeCount: 0
       _Keys:
-      - Debug/WebGL/Player/IL2CPP
-      - Debug/WebGL/Player
-      - Debug/WebGL
-      - Debug
       - 
       - 
       - 
       _Values:
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys:
-        - Debug/WebGL/Player/IL2CPP
-      - enabled: 1
-        childKeys:
-        - Debug/WebGL/Player
-      - enabled: 1
-        childKeys:
-        - Debug/WebGL
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -115,10 +76,9 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Debug/WebGL/Player/IL2CPP
+    selectedKeyChain: 
   _preBuildActions:
-    buildActions:
-    - {fileID: -1757239053603400146}
+    buildActions: []
   _postBuildActions:
     buildActions:
     - {fileID: 2009643749676829822}
