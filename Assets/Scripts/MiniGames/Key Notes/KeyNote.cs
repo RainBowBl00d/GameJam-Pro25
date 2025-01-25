@@ -47,7 +47,7 @@ public class KeyNote : MonoBehaviour
         {
             stats.Missed++;
         }
-        GetComponentInParent<KeyNotesGame>().keyNotes.Remove(this);
+        GetComponentInParent<KeyNotesGame>().keyNotes.Remove(gameObject);
         Destroy(gameObject);
     }
     void Rescale(Transform obj, Vector3 newScale)

@@ -10,18 +10,18 @@ public class KeyNotesGame : MonoBehaviour
     [SerializeField] string[] letters;
     public BoxCollider2D box;
     private Vector2 _min, _max;
-    public List<KeyNote> keyNotes;
+     public  List<GameObject> keyNotes;
     public float timeBtwDecreases;
     private float _timePassedAfterLastDecrease = 0f;
     bool _isrunning = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         //box = GetComponent<BoxCollider2D>();
         _min = box.bounds.min;
         _max = box.bounds.max;
 
+        keyNotes = new List<GameObject>();
         //GenerateMiniGame(15, true, false, 2f);
     }
 
@@ -29,12 +29,12 @@ public class KeyNotesGame : MonoBehaviour
     {
         _timePassedAfterLastDecrease += Time.deltaTime;
         if (_timePassedAfterLastDecrease >= timeBtwDecreases && keyNotes.Count != 0)
-            foreach (KeyNote note in keyNotes)
+            foreach (GameObject note in keyNotes)
             {
-                if (note.startShirking == false)
+                KeyNote _ = note.GetComponent<KeyNote>();
+                if (_.startShirking == false)
                 {
-                    note.startShirking = true;
-                    keyNotes.Remove(note);
+                    _.startShirking = true;
                     _timePassedAfterLastDecrease = 0f;
                     break;
                 }
@@ -44,26 +44,22 @@ public class KeyNotesGame : MonoBehaviour
     public void GenerateMiniGame(KeyNoteGameLevelStats stats)
     {
         if (_isrunning) return;
+        _isrunning = true;
         Debug.Log($"Generate game: {stats.sequenceLength} {stats.sortHorizontally} {stats.ascending} {stats.timeToWaitBtwRealses}");
         List<Vector2> vector2s = GetRandomPosInBox(stats.sequenceLength);
         Debug.Log("Got vectors");
         vector2s = SortVector2List(vector2s, stats.sortHorizontally, stats.ascending);
         StartCoroutine(SpawnNotes(vector2s, stats.timeToWaitBtwRealses, stats));
-
-
-
     }
 
     #region Helper
     private IEnumerator SpawnNotes(List<Vector2> positions, float timeToWait, KeyNoteGameLevelStats stats)
     {
-        _isrunning = true;
         foreach (Vector2 position in positions)
         {
-            StartCoroutine(GenNote(position, timeToWait, stats));
+            StartCoroutine(GenNote(position, stats));
             yield return new WaitForSecondsRealtime(timeToWait);
         }
-        _isrunning = false;
         while(keyNotes.Count != 0) yield return new WaitForSecondsRealtime(1f);
         if (stats.Correct / (stats.Missed + stats.Correct) >= stats.hitFactorRequirement)
         {
@@ -71,15 +67,16 @@ public class KeyNotesGame : MonoBehaviour
         }
         stats.Missed = 0;
         stats.Correct = 0;
+        _isrunning = false;
     }
 
-    private IEnumerator GenNote(Vector2 position, float timeToWait, KeyNoteGameLevelStats stats)
+    private IEnumerator GenNote(Vector2 position, KeyNoteGameLevelStats stats)
     {
         GameObject note = Instantiate(keyNote, position, Quaternion.identity);
         KeyNote keyNoteComponent = note.GetComponent<KeyNote>();
         note.transform.parent = transform;
         keyNoteComponent.stats = stats;
-        keyNotes.Add(keyNoteComponent);
+        keyNotes.Add(note);
 
         string randomString = GetRandomString(letters);
 
@@ -94,7 +91,7 @@ public class KeyNotesGame : MonoBehaviour
             textComponent.text = randomString;
         }
 
-        yield return new WaitForSecondsRealtime(3f);
+        yield return null;
     }
 
     List<Vector2> GetRandomPosInBox(int length)
