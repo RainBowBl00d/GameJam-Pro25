@@ -14,6 +14,7 @@ public class ProgressSlider : MonoBehaviour
         if (_stats != null)
         {
             progress.value = _stats.Correct;
+            progress.maxValue = _stats.sequenceLength - _stats.Lost;
         }
     }
     

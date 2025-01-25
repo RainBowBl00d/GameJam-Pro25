@@ -53,7 +53,7 @@ public class KeyNotesGame : MonoBehaviour
         if (_isrunning) return;
         _isrunning = true;
         Debug.Log($"Generate game: {stats.sequenceLength} {stats.sortHorizontally} {stats.ascending} {stats.timeToWaitBtwRealses}");
-        List<Vector2> vector2s = GetRandomPosInBox(stats.sequenceLength);
+        List<Vector2> vector2s = GetRandomPosInBox(stats.sequenceLength, stats);
         Debug.Log("Got vectors");
         vector2s = SortVector2List(vector2s, stats.sortHorizontally, stats.ascending);
         StartCoroutine(SpawnNotes(vector2s, stats.timeToWaitBtwRealses, stats));
@@ -70,7 +70,7 @@ public class KeyNotesGame : MonoBehaviour
             yield return new WaitForSecondsRealtime(timeToWait);
         }
         while(keyNotes.Count != 0) yield return new WaitForSecondsRealtime(1f);
-        if (stats.Correct / (stats.Missed + stats.Correct) >= stats.hitFactorRequirement)
+        if (stats.Correct / (stats.Missed + stats.Correct - stats.Lost) >= stats.hitFactorRequirement)
         {
             stats.Completed = true;
         }
@@ -101,7 +101,7 @@ public class KeyNotesGame : MonoBehaviour
         yield return null;
     }
 
-    List<Vector2> GetRandomPosInBox(int length)
+    List<Vector2> GetRandomPosInBox(int length, KeyNoteGameLevelStats stats)
     {
         List<Vector2> vector2s = new List<Vector2>();
         float minDistance = keyNote.GetComponent<CircleCollider2D>().radius * 2f; // Adjust based on your game design
@@ -127,7 +127,7 @@ public class KeyNotesGame : MonoBehaviour
                 }
 
                 attempts++;
-            } while (!isValidPosition && attempts < 100); // Avoid infinite loops
+            } while (!isValidPosition && attempts < 1000); // Avoid infinite loops
 
             if (isValidPosition)
             {
@@ -135,6 +135,7 @@ public class KeyNotesGame : MonoBehaviour
             }
             else
             {
+                stats.Lost++;
                 Debug.LogWarning("Failed to find a non-overlapping position after 100 attempts.");
             }
         }
