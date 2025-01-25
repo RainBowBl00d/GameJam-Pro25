@@ -15,7 +15,6 @@ public class DodgeGame : MonoBehaviour
         min = box.bounds.min;
         max = box.bounds.max;
 
-        GenerateGame(3f, 5f, 10f, 0f, 3f, 3f);
     }
 
     public void GenerateGame(float rOF, float bulletSpeed, float time, float sineWeight, float sineFrequency, float sineAmplitude)

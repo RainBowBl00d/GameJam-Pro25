@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mouse
+  - Dodge
   layers:
   - Default
   - TransparentFX

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class KeyNote : MonoBehaviour
 {
@@ -17,7 +13,7 @@ public class KeyNote : MonoBehaviour
         if (startShirking)
         {
             _timePassed += Time.deltaTime;
-            transform.localScale = new((timeForPressing - _timePassed) / timeForPressing, (timeForPressing - _timePassed) / timeForPressing, 1f) ;
+            Rescale(transform, new((timeForPressing - _timePassed) / timeForPressing, (timeForPressing - _timePassed) / timeForPressing, 1f));
         }
         if(timeForPressing - _timePassed <= 0)
         {
@@ -44,5 +40,14 @@ public class KeyNote : MonoBehaviour
         GetComponentInParent<KeyNotesGame>().keyNotes.Remove(this);
         Destroy(gameObject);
     }
-
+    void Rescale(Transform obj, Vector3 newScale)
+    {
+        if (obj.root != obj)
+        {
+            Transform parent = obj.parent;
+            obj.SetParent(null);
+            obj.localScale = newScale;
+            obj.SetParent(parent, true);
+        }
+    }
 }
