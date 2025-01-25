@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1757239053603400146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0f7a04940394844a505e73c3eb8cec, type: 3}
+  m_Name: ZipFileOperation
+  m_EditorClassIdentifier: 
+  actionType: 1
+  actionName: ZipFileOperation
+  note: 
+  actionEnabled: 1
+  configureEditor: 0
+  filter:
+    condition: 0
+    clauses: []
+  inputPath: $BUILDPATH
+  outputPath: $BUILDPATH
+  outputFileName: $PRODUCT_NAME-$RELEASE_TYPE-$YEAR_$MONTH_$DAY.zip
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,8 +41,8 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
-    buildCounter: 0
-    buildVersion: 
+    buildCounter: 8
+    buildVersion: 1.0.0.8
     versionTemplate: 1.0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -31,10 +54,22 @@ MonoBehaviour:
       productName: GameJam Pro 25
       syncAppNameWithProduct: 1
       appBuildName: GameJam Pro 25
-      buildOptions: 0
+      buildOptions: 1
       customDefines: 
       sceneList:
-        releaseScenes: []
+        releaseScenes:
+        - fileGUID: ac6fbf284f3659141b4718dbbb10f183
+          sceneActive: 1
+        - fileGUID: 41a62eddac95fd44692cf245e47512b7
+          sceneActive: 1
+        - fileGUID: b77b1297cccfd124c8f7701a39580799
+          sceneActive: 1
+        - fileGUID: 1cca42d62490df340ae521da9432386a
+          sceneActive: 1
+        - fileGUID: 6fd0e72ffc85383449d18d5a54582bc3
+          sceneActive: 1
+        - fileGUID: c1999ee6807aabe45bc9b9fd4d6d8c0d
+          sceneActive: 1
   _platformList:
     platforms:
     - {fileID: 6157346644253036337}
@@ -81,7 +116,7 @@ MonoBehaviour:
     selectedKeyChain: Debug/WebGL/Player/IL2CPP
   _preBuildActions:
     buildActions:
-    - {fileID: 3003541715860808857}
+    - {fileID: -1757239053603400146}
   _postBuildActions:
     buildActions:
     - {fileID: 2009643749676829822}
@@ -104,7 +139,10 @@ MonoBehaviour:
   configureEditor: 0
   filter:
     condition: 0
-    clauses: []
+    clauses:
+    - type: 0
+      comparison: 0
+      test: 
   pathToButlerExe: Assets\Butler\butler.exe
   nameOfItchUser: Rainbowblood
   nameOfItchGame: Game Jam Pro Tartu 25
@@ -112,29 +150,6 @@ MonoBehaviour:
   channelName: $PLATFORM-$ARCHITECTURE
   showUploadProgress: 1
   itchChannelOverride: 
---- !u!114 &3003541715860808857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de0f7a04940394844a505e73c3eb8cec, type: 3}
-  m_Name: ZipFileOperation
-  m_EditorClassIdentifier: 
-  actionType: 1
-  actionName: ZipFileOperation
-  note: 
-  actionEnabled: 1
-  configureEditor: 0
-  filter:
-    condition: 0
-    clauses: []
-  inputPath: $BUILDPATH
-  outputPath: $BUILDPATH
-  outputFileName: $PRODUCT_NAME-$RELEASE_TYPE-$YEAR_$MONTH_$DAY.zip
 --- !u!114 &6157346644253036337
 MonoBehaviour:
   m_ObjectHideFlags: 0

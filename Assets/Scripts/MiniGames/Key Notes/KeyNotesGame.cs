@@ -13,7 +13,7 @@ public class KeyNotesGame : MonoBehaviour
     public List<KeyNote> keyNotes;
     public float timeBtwDecreases;
     private float _timePassedAfterLastDecrease = 0f;
-
+    bool _isrunning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,31 +41,44 @@ public class KeyNotesGame : MonoBehaviour
             }
     }
 
-    public void GenerateMiniGame(int sequenceLength, bool sortHorizontally, bool ascending, float timeToWaitBtwRealses)
+    public void GenerateMiniGame(KeyNoteGameLevelStats stats)
     {
-        Debug.Log($"Generate game: {sequenceLength} {sortHorizontally} {ascending} {timeToWaitBtwRealses}");
-        List<Vector2> vector2s = GetRandomPosInBox(sequenceLength);
+        if (_isrunning) return;
+        Debug.Log($"Generate game: {stats.sequenceLength} {stats.sortHorizontally} {stats.ascending} {stats.timeToWaitBtwRealses}");
+        List<Vector2> vector2s = GetRandomPosInBox(stats.sequenceLength);
         Debug.Log("Got vectors");
-        vector2s = SortVector2List(vector2s, sortHorizontally, ascending);
-        StartCoroutine(SpawnNotes(vector2s, timeToWaitBtwRealses));
+        vector2s = SortVector2List(vector2s, stats.sortHorizontally, stats.ascending);
+        StartCoroutine(SpawnNotes(vector2s, stats.timeToWaitBtwRealses, stats));
+
+
+
     }
 
     #region Helper
-
-    private IEnumerator SpawnNotes(List<Vector2> positions, float timeToWait)
+    private IEnumerator SpawnNotes(List<Vector2> positions, float timeToWait, KeyNoteGameLevelStats stats)
     {
+        _isrunning = true;
         foreach (Vector2 position in positions)
         {
-            StartCoroutine(GenNote(position, timeToWait));
+            StartCoroutine(GenNote(position, timeToWait, stats));
             yield return new WaitForSecondsRealtime(timeToWait);
         }
+        _isrunning = false;
+        while(keyNotes.Count != 0) yield return new WaitForSecondsRealtime(1f);
+        if (stats.Correct / (stats.Missed + stats.Correct) >= stats.hitFactorRequirement)
+        {
+            stats.Completed = true;
+        }
+        stats.Missed = 0;
+        stats.Correct = 0;
     }
 
-    private IEnumerator GenNote(Vector2 position, float timeToWait)
+    private IEnumerator GenNote(Vector2 position, float timeToWait, KeyNoteGameLevelStats stats)
     {
         GameObject note = Instantiate(keyNote, position, Quaternion.identity);
         KeyNote keyNoteComponent = note.GetComponent<KeyNote>();
         note.transform.parent = transform;
+        keyNoteComponent.stats = stats;
         keyNotes.Add(keyNoteComponent);
 
         string randomString = GetRandomString(letters);
@@ -81,7 +94,6 @@ public class KeyNotesGame : MonoBehaviour
             textComponent.text = randomString;
         }
 
-        // Wait for 3 seconds before finishing this coroutine (if needed)
         yield return new WaitForSecondsRealtime(3f);
     }
 
@@ -132,7 +144,6 @@ public class KeyNotesGame : MonoBehaviour
             return keyCode;
         }
 
-        // Return KeyCode.None if the string doesn't match any valid KeyCode
         return KeyCode.None;
     }
 

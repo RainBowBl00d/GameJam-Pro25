@@ -35,9 +35,9 @@ namespace SuperUnityBuild.Generated
 
     public static class BuildConstants
     {
-        public static readonly DateTime buildDate = new DateTime(638733966122586099);
-        public const string version = "1.0.0.1";
-        public const int buildCounter = 1;
+        public static readonly DateTime buildDate = new DateTime(638728092463304695);
+        public const string version = "";
+        public const int buildCounter = 0;
         public const ReleaseType releaseType = ReleaseType.Debug;
         public const Platform platform = Platform.WebGL;
         public const ScriptingBackend scriptingBackend = ScriptingBackend.IL2CPP;

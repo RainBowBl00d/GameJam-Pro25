@@ -8,6 +8,8 @@ public class KeyNote : MonoBehaviour
     public bool startShirking = false;
     float _timePassed = 0f;
 
+    public KeyNoteGameLevelStats stats;
+
     void Update()
     {
         if (startShirking)
@@ -22,14 +24,14 @@ public class KeyNote : MonoBehaviour
 
     }
 
-    private void OnMouseOver()
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if (Input.GetKeyDown(key))
+        if (Input.GetKeyDown(key) && collider.tag ==  "Mouse")
         {
             correct = true;
             SendAndDestroy();
         }
-        else if (Input.anyKeyDown && !Input.GetKeyDown(key))
+        else if (Input.anyKeyDown && !Input.GetKeyDown(key) && ! (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2)))
         {
             SendAndDestroy();
         }
@@ -37,6 +39,14 @@ public class KeyNote : MonoBehaviour
 
     public void SendAndDestroy()
     {
+        if(correct)
+        {
+            stats.Correct++;
+        }
+        else if(!correct)
+        {
+            stats.Missed++;
+        }
         GetComponentInParent<KeyNotesGame>().keyNotes.Remove(this);
         Destroy(gameObject);
     }
