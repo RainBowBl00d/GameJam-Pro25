@@ -9,7 +9,7 @@ namespace AdaptiveAudio
 
         void Start()
         {
-            AudioManager = VerticalAudioManager.Instance;
+            AudioManager = VerticalAudioManager.instance;
         }
 
         private void OnTriggerEnter2D(Collider2D other)

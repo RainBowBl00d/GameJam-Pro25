@@ -4,18 +4,20 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class KeyNotesGameHelper : MonoBehaviour
 {
     [SerializeField] KeyNotesGame keyNoteGame;
     [SerializeField] GameObject button;
+    [SerializeField] private ProgressSlider slider;
 
     [SerializeField]KeyNoteGameLevelStats levelStats1, levelStats2, levelStats3;
 
     public void Level1()
     {
         keyNoteGame.GenerateMiniGame(levelStats1);
-
+        slider.StartGame(levelStats1);
     }
     public void Level2()
     {
@@ -25,7 +27,7 @@ public class KeyNotesGameHelper : MonoBehaviour
             return;
         }
         keyNoteGame.GenerateMiniGame(levelStats2);
-
+        slider.StartGame(levelStats2);
     }
     public void Level3()
     {
@@ -35,6 +37,7 @@ public class KeyNotesGameHelper : MonoBehaviour
             return;
         }
         keyNoteGame.GenerateMiniGame(levelStats3);
+        slider.StartGame(levelStats3);
         if (levelStats3.Completed) button.SetActive(true);
     }
     public void Next()

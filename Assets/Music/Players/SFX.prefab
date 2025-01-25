@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec78b53575ea43459aaa93367e6222c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSourcePrefab: {fileID: 0}
+  audioSourcePrefab: {fileID: 3020391427147033406, guid: 0e0d8fa723daba941b51a27fa2b50444, type: 3}
   gameStateList:
   - trackList:
     - name: SFX 1
