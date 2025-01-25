@@ -10,7 +10,7 @@ public class HorizontalAreaCollide : MonoBehaviour
     public HorizontalAudioManager audioSegmentator;
     void Start()
     {
-        AudioManager = VerticalAudioManager.Instance;
+        AudioManager = VerticalAudioManager.instance;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

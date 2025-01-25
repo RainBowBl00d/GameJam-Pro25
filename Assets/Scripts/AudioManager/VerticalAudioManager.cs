@@ -8,16 +8,15 @@ namespace AdaptiveAudio{
 
     public class VerticalAudioManager : MonoBehaviour
         {
-        public static VerticalAudioManager Instance;
+        public static VerticalAudioManager instance;
         public AudioSource audioSourcePrefab;
         public AudioPool audioPool;
         [HideInInspector]
         public AnimationCurve defaultCurve;
-        private float _volume = 1f;
 
         void Awake() {
-            if (Instance == null){
-                Instance = this;
+            if (instance == null){
+                instance = this;
                 DontDestroyOnLoad(this.gameObject);
             } else {
                 Destroy(this);
@@ -35,30 +34,13 @@ namespace AdaptiveAudio{
             defaultCurve.postWrapMode = WrapMode.Clamp;
         }
 
-        public void SetVolume(float volume)
-        {
-            _volume = volume;
-            {
-                foreach (Song s in audioPool.songlist)
-                {
-                    foreach (Layer l in s.layerList)
-                    {
-                        foreach (Track t in l.tracksList)
-                        {
-                            t.SetVolume(volume);
-                        }
-                    }
-                }
-            }
-        }
-
-        public void Play(Song song, float time = 0f, bool loop = true)
+        public void Play(Song song, float time = 0f, bool loop = true,float volume = 1f)
         {
             foreach (Song s in audioPool.songlist)
             {
                 if (song.Equals(s))
                 {
-                    song.Play(time, loop, _volume);
+                    song.Play(time, loop, volume);
                 }
                 else
                 {
@@ -67,11 +49,11 @@ namespace AdaptiveAudio{
             }
         }
 
-        public void Play(Layer layer, float time = 0f, bool loop = true, bool stopOtherLayers = false)
+        public void Play(Layer layer, float time = 0f, bool loop = true, bool stopOtherLayers = false, float volume = 1f)
         {
             if (!stopOtherLayers)
             {
-                layer.Play(time, loop, _volume);
+                layer.Play(time, loop, volume);
             }
             else
             {
@@ -80,7 +62,7 @@ namespace AdaptiveAudio{
                     foreach (Layer l in s.layerList)
                     {
                         if (layer.Equals(l))
-                            layer.Play(time, loop, _volume);
+                            layer.Play(time, loop, volume);
                         else
                             layer.Stop();
                     }
@@ -88,11 +70,11 @@ namespace AdaptiveAudio{
             }
         }
 
-        public void Play(Track track, float time = 0f, bool loop = true, bool stopOthertracks = false)
+        public void Play(Track track, float time = 0f, bool loop = true, bool stopOthertracks = false, float volume = 1f)
         {
             if (!stopOthertracks)
             {
-                track.Play(time, loop, _volume);
+                track.Play(time, loop, volume);
             }
             else
             {
@@ -103,7 +85,7 @@ namespace AdaptiveAudio{
                         foreach (Track t in l.tracksList)
                         {
                             if (track.Equals(t))
-                                track.Play(time, loop, _volume);
+                                track.Play(time, loop, volume);
                             else
                                 track.Stop();
                         }
@@ -196,7 +178,7 @@ namespace AdaptiveAudio{
             StartCoroutine(FadeInStart(track, animationCurveType, loop, fadeDuration, time));
         }
 
-        private IEnumerator FadeInStart(Track track, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float time = 0f)
+        private IEnumerator FadeInStart(Track track, AnimationCurve animationCurveType, bool loop = true, float fadeDuration = 3f, float time = 0f, float volume = 1f)
         {
             float timer = 0f;
             float initialVolume = 0f;
@@ -207,7 +189,7 @@ namespace AdaptiveAudio{
             while (timer < fadeDuration && track.IsFadingIn)
             {
                 timer += Time.deltaTime;
-                track.AudioSource.volume = Mathf.Lerp(initialVolume, _volume, animationCurveType.Evaluate(timer / fadeDuration));
+                track.AudioSource.volume = Mathf.Lerp(initialVolume, volume, animationCurveType.Evaluate(timer / fadeDuration));
                 yield return null;
             }          
 

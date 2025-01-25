@@ -45,13 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec78b53575ea43459aaa93367e6222c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSourcePrefab: {fileID: 0}
+  audioSourcePrefab: {fileID: 3020391427147033406, guid: 029cf8b7a47c0b845942993505045203, type: 3}
   gameStateList:
   - trackList:
     - name: Track 1
       sound: {fileID: 8300000, guid: 528ec7354ee730841b012a87154c0280, type: 3}
-    - name: Track 1
-      sound: {fileID: 8300000, guid: f75776a11b677d64ab853a44bbf38d11, type: 3}
     gameState: 0
     whenTrackFinishes: 0
 --- !u!114 &-16059699030358746
