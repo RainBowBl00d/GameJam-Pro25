@@ -62,6 +62,8 @@ public class KeyNotesGame : MonoBehaviour
     #region Helper
     private IEnumerator SpawnNotes(List<Vector2> positions, float timeToWait, KeyNoteGameLevelStats stats)
     {
+        stats.Missed = 0;
+        stats.Correct = 0;
         foreach (Vector2 position in positions)
         {
             StartCoroutine(GenNote(position, stats));
@@ -72,8 +74,6 @@ public class KeyNotesGame : MonoBehaviour
         {
             stats.Completed = true;
         }
-        stats.Missed = 0;
-        stats.Correct = 0;
         _isrunning = false;
     }
 

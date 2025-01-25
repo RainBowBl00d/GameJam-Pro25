@@ -1,20 +1,22 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class AudioSlider : MonoBehaviour
 {
+    [SerializeField] private HorizontalAudioManager hor;
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private String volumeVariable;
     [SerializeField] private Slider slider;
     [SerializeField] private float scale;
     [SerializeField] private float sub;
     
-    private void Awake()
+    private void Start()
     {
-        float volume = PlayerPrefs.GetFloat(volumeVariable, 0);
-        slider.value = Mathf.Exp(Mathf.Exp((volume + sub) / scale));
+        float volume = Mathf.Exp(Mathf.Exp((PlayerPrefs.GetFloat(volumeVariable, 0) + sub) / scale));
+        if (!Mathf.Approximately(slider.value, volume)) slider.value = volume;
     }
 
     public void OnChangeSlider(float value)
@@ -24,5 +26,9 @@ public class AudioSlider : MonoBehaviour
         mixer.SetFloat(volumeVariable, volume);
         PlayerPrefs.SetFloat(volumeVariable, volume);
         PlayerPrefs.Save();
+        if (hor != null)
+        {
+            hor.StartPlaying();
+        }
     }
 }

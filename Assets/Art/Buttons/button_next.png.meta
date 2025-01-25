@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e8f1fcc54b3c7fd48b9ca605d06245db
+guid: ed039684c09c01644a089cdec2062f61
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,91 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: kratt_spritesheet_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 730
-        height: 978
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6ec6b4c9ac9784f46a178a446b6c8d98
-      internalID: -233752644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kratt_spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 737
-        y: 0
-        width: 742
-        height: 978
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c795619b66e78af47b42b32c21b73b88
-      internalID: -1630306301
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kratt_spritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 1489
-        y: 0
-        width: 744
-        height: 978
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 6, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76ecfc6d18b930b41b534b7a3cd6fcd2
-      internalID: 1147647012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: kratt_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 2218
-        y: 0
-        width: 763
-        height: 978
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 23, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d176853710db184a9322e30e9d46380
-      internalID: -1398823514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -203,11 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      kratt_spritesheet_0: -233752644
-      kratt_spritesheet_1: -1630306301
-      kratt_spritesheet_2: 1147647012
-      kratt_spritesheet_3: -1398823514
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
