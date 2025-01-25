@@ -11,6 +11,8 @@ public class Bullet : MonoBehaviour
 
     private float timeOffset;
 
+    public DodgeGameLevelStats stats;
+
     private void Start()
     {
         timeOffset = Random.Range(0f, 2f * Mathf.PI);
@@ -37,6 +39,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.tag == "Mouse")
         {
+            stats.hits++;
             Destroy(gameObject);
         }
     }

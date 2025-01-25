@@ -28,7 +28,9 @@ public class KeyNotesGame : MonoBehaviour
     private void Update()
     {
         _timePassedAfterLastDecrease += Time.deltaTime;
+
         if (_timePassedAfterLastDecrease >= timeBtwDecreases && keyNotes.Count != 0)
+        {
             foreach (GameObject note in keyNotes)
             {
                 KeyNote _ = note.GetComponent<KeyNote>();
@@ -39,7 +41,12 @@ public class KeyNotesGame : MonoBehaviour
                     break;
                 }
             }
+
+            // Reorder overlapping notes
+            ReorderOverlappingNotes();
+        }
     }
+
 
     public void GenerateMiniGame(KeyNoteGameLevelStats stats)
     {
@@ -97,9 +104,39 @@ public class KeyNotesGame : MonoBehaviour
     List<Vector2> GetRandomPosInBox(int length)
     {
         List<Vector2> vector2s = new List<Vector2>();
+        float minDistance = keyNote.GetComponent<CircleCollider2D>().radius * 2f; // Adjust based on your game design
+
         for (int x = 0; x < length; x++)
         {
-            vector2s.Add(new Vector2(Random.Range(_min.x, _max.x), Random.Range(_min.y, _max.y)));
+            Vector2 newPosition;
+            bool isValidPosition;
+            int attempts = 0;
+
+            do
+            {
+                newPosition = new Vector2(Random.Range(_min.x, _max.x), Random.Range(_min.y, _max.y));
+                isValidPosition = true;
+
+                foreach (var pos in vector2s)
+                {
+                    if (Vector2.Distance(newPosition, pos) < minDistance)
+                    {
+                        isValidPosition = false;
+                        break;
+                    }
+                }
+
+                attempts++;
+            } while (!isValidPosition && attempts < 100); // Avoid infinite loops
+
+            if (isValidPosition)
+            {
+                vector2s.Add(newPosition);
+            }
+            else
+            {
+                Debug.LogWarning("Failed to find a non-overlapping position after 100 attempts.");
+            }
         }
 
         return vector2s;
@@ -142,6 +179,40 @@ public class KeyNotesGame : MonoBehaviour
         }
 
         return KeyCode.None;
+    }
+    void ReorderOverlappingNotes()
+    {
+        float minDistance = 0.5f; // Same as in GetRandomPosInBox
+        List<GameObject> nonOverlapping = new List<GameObject>();
+        List<GameObject> overlapping = new List<GameObject>();
+
+        foreach (var note in keyNotes)
+        {
+            Vector2 notePos = note.transform.position;
+            bool isOverlapping = false;
+
+            foreach (var otherNote in nonOverlapping)
+            {
+                if (Vector2.Distance(notePos, otherNote.transform.position) < minDistance)
+                {
+                    isOverlapping = true;
+                    break;
+                }
+            }
+
+            if (isOverlapping)
+            {
+                overlapping.Add(note);
+            }
+            else
+            {
+                nonOverlapping.Add(note);
+            }
+        }
+
+        keyNotes.Clear();
+        keyNotes.AddRange(nonOverlapping);
+        keyNotes.AddRange(overlapping);
     }
 
     #endregion

@@ -89,6 +89,6 @@ public class DodgeGameHelper : MonoBehaviour
     public void Play()
     {
         Debug.Log("Game Started");
-        dodgeGame.GenerateGame(rOF, bulletSpeed, time, sineWeight, sineFrequency, sineAmplitude);
+        //dodgeGame.GenerateGame(rOF, bulletSpeed, time, sineWeight, sineFrequency, sineAmplitude);
     }
 }

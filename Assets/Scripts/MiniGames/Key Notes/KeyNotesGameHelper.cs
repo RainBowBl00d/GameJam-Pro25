@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class KeyNotesGameHelper : MonoBehaviour
 {
     [SerializeField] KeyNotesGame keyNoteGame;
+    [SerializeField] GameObject button;
 
     [SerializeField]KeyNoteGameLevelStats levelStats1, levelStats2, levelStats3;
 
@@ -33,6 +35,7 @@ public class KeyNotesGameHelper : MonoBehaviour
             return;
         }
         keyNoteGame.GenerateMiniGame(levelStats3);
+        if (levelStats3.Completed) button.SetActive(true);
     }
     public void Next()
     {
@@ -41,6 +44,7 @@ public class KeyNotesGameHelper : MonoBehaviour
             Debug.Log("Level 3 unCompleted");
             return;
         }
+        SceneManager.LoadScene(7);
     }
 }
 [System.Serializable]

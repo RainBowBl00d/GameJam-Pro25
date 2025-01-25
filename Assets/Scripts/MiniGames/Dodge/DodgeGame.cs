@@ -7,6 +7,7 @@ public class DodgeGame : MonoBehaviour
     BoxCollider2D box;
     [SerializeField] GameObject bulletPrefab;
     Vector2 min, max;
+    bool running = false;
 
 
     void Start()
@@ -17,18 +18,20 @@ public class DodgeGame : MonoBehaviour
 
     }
 
-    public void GenerateGame(float rOF, float bulletSpeed, float time, float sineWeight, float sineFrequency, float sineAmplitude)
+    public void GenerateGame(DodgeGameLevelStats stats)
     {
-        StartCoroutine(SpawnBulletRoutine(rOF, bulletSpeed,time ,sineWeight, sineFrequency, sineAmplitude));
+        if (running) return;
+        StartCoroutine(SpawnBulletRoutine(stats));
     }
 
     #region Helper Methods
 
-    private IEnumerator SpawnBulletRoutine(float rOF, float bulletSpeed, float time,  float sineWeight, float sineFrequency, float sineAmplitude)
+    private IEnumerator SpawnBulletRoutine(DodgeGameLevelStats stats)
     {
+        running = true;
         float elapsedTime = 0f;
 
-        while (elapsedTime < time)
+        while (elapsedTime < stats.time)
         {
             Vector2 spawnPosition = GetRandom();
             Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -37,14 +40,17 @@ public class DodgeGame : MonoBehaviour
             bullet.transform.parent = transform;
             Bullet _bullet = bullet.GetComponent<Bullet>();
             _bullet.direction = direction - spawnPosition;
-            _bullet.speed = bulletSpeed;
-            _bullet.sineWeight = sineWeight;
-            _bullet.sineFrequency = sineFrequency;
-            _bullet.sineAmplitude = sineAmplitude;
+            _bullet.speed = stats.bulletSpeed;
+            _bullet.sineWeight = stats.sineWeight;
+            _bullet.sineFrequency = stats.sineFrequency;
+            _bullet.sineAmplitude = stats.sineAmplitude;
+            _bullet.stats = stats;
 
-            elapsedTime += 1f / rOF;
-            yield return new WaitForSeconds(1f / rOF); 
+            elapsedTime += 1f / stats.rOF;
+            yield return new WaitForSeconds(1f / stats.rOF); 
         }
+        running = false;
+        if (((stats.rOF * stats.time) - stats.hits) / (stats.rOF * stats.time) >= stats.DodgeFactor) stats.Completed = true;
     }
 
     Vector2 GetRandom()

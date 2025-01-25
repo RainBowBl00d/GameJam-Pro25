@@ -49,19 +49,23 @@ MonoBehaviour:
           sceneActive: 1
         - fileGUID: 6cde78bc3367d4e4aa3c61590cce17bc
           sceneActive: 1
+        - fileGUID: f0be4bf9134db0344abe630c7425f1e0
+          sceneActive: 1
+        - fileGUID: 4bf70bd5d7d3e114b8e00e677f3d178c
+          sceneActive: 1
   _platformList:
     platforms: []
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffffffffffffffffffff
-      _HashCodes: 000000000000000000000000
-      _Next: 000000000000000000000000
-      _Count: 0
-      _Version: 0
+      _Buckets: ffffffffffffffff00000000
+      _HashCodes: 0d4e99340000000000000000
+      _Next: ffffffff0000000000000000
+      _Count: 1
+      _Version: 1
       _FreeList: -1
       _FreeCount: 0
       _Keys:
-      - 
+      - Debug
       - 
       - 
       _Values:
