@@ -1,28 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1757239053603400146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de0f7a04940394844a505e73c3eb8cec, type: 3}
-  m_Name: ZipFileOperation
-  m_EditorClassIdentifier: 
-  actionType: 1
-  actionName: ZipFileOperation
-  note: 
-  actionEnabled: 1
-  configureEditor: 0
-  filter:
-    condition: 0
-    clauses: []
-  inputPath: $BUILDPATH
-  outputPath: $BUILDPATH
-  outputFileName: $PRODUCT_NAME-$RELEASE_TYPE-$YEAR_$MONTH_$DAY.zip
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,67 +18,29 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
-    buildCounter: 8
-    buildVersion: 1.0.0.8
+    buildCounter: 0
+    buildVersion: 
     versionTemplate: 1.0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
   _releaseTypeList:
-    releaseTypes:
-    - typeName: Debug
-      bundleIdentifier: com.DefaultCompany.GameJam-Pro-25
-      companyName: WIP
-      productName: GameJam Pro 25
-      syncAppNameWithProduct: 1
-      appBuildName: GameJam Pro 25
-      buildOptions: 1
-      customDefines: 
-      sceneList:
-        releaseScenes:
-        - fileGUID: ac6fbf284f3659141b4718dbbb10f183
-          sceneActive: 1
-        - fileGUID: 41a62eddac95fd44692cf245e47512b7
-          sceneActive: 1
-        - fileGUID: b77b1297cccfd124c8f7701a39580799
-          sceneActive: 1
-        - fileGUID: 1cca42d62490df340ae521da9432386a
-          sceneActive: 1
-        - fileGUID: 6fd0e72ffc85383449d18d5a54582bc3
-          sceneActive: 1
-        - fileGUID: c1999ee6807aabe45bc9b9fd4d6d8c0d
-          sceneActive: 1
+    releaseTypes: []
   _platformList:
-    platforms:
-    - {fileID: 6157346644253036337}
+    platforms: []
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffffffffffffffffffff0200000003000000ffffffffffffffff
-      _HashCodes: 20de535739f6d32775cc3a660d4e9934000000000000000000000000
-      _Next: ffffffff00000000ffffffff01000000000000000000000000000000
-      _Count: 4
-      _Version: 4
+      _Buckets: ffffffffffffffffffffffff
+      _HashCodes: 000000000000000000000000
+      _Next: 000000000000000000000000
+      _Count: 0
+      _Version: 0
       _FreeList: -1
       _FreeCount: 0
       _Keys:
-      - Debug/WebGL/Player/IL2CPP
-      - Debug/WebGL/Player
-      - Debug/WebGL
-      - Debug
       - 
       - 
       - 
       _Values:
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys:
-        - Debug/WebGL/Player/IL2CPP
-      - enabled: 1
-        childKeys:
-        - Debug/WebGL/Player
-      - enabled: 1
-        childKeys:
-        - Debug/WebGL
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -113,68 +52,8 @@ MonoBehaviour:
     showBuildInfo: 0
     hideDisabled: 0
     treeView: 0
-    selectedKeyChain: Debug/WebGL/Player/IL2CPP
+    selectedKeyChain: 
   _preBuildActions:
-    buildActions:
-    - {fileID: -1757239053603400146}
+    buildActions: []
   _postBuildActions:
-    buildActions:
-    - {fileID: 2009643749676829822}
---- !u!114 &2009643749676829822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d88f7d353534a4fbdeb11196057db7, type: 3}
-  m_Name: UploadItch
-  m_EditorClassIdentifier: 
-  actionType: 1
-  actionName: UploadItch
-  note: 
-  actionEnabled: 1
-  configureEditor: 0
-  filter:
-    condition: 0
-    clauses:
-    - type: 0
-      comparison: 0
-      test: 
-  pathToButlerExe: Assets\Butler\butler.exe
-  nameOfItchUser: Rainbowblood
-  nameOfItchGame: Game Jam Pro Tartu 25
-  useGeneratedBuildVersion: 1
-  channelName: $PLATFORM-$ARCHITECTURE
-  showUploadProgress: 1
-  itchChannelOverride: 
---- !u!114 &6157346644253036337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0acaf75cc66fc934ea46bf602fc7c245, type: 3}
-  m_Name: WebGL
-  m_EditorClassIdentifier: 
-  enabled: 1
-  distributionList:
-    distributions: []
-  targets:
-  - type: 20
-    name: Player
-    enabled: 1
-    binaryNameFormat: '{0}'
-    subtarget: 0
-  variants: []
-  scriptingBackends:
-  - scriptingImplementation: 1
-    name: IL2CPP
-    enabled: 1
-  platformName: WebGL
-  targetGroup: 13
+    buildActions: []
