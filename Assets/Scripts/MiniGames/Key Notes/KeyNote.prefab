@@ -270,11 +270,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145c1d261e99a2646b1964cb2c50cc91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Key: 115
-  WrongPresses: 0
-  Correct: 0
-  TimeForPressing: 5
-  StartShirking: 0
+  key: 97
+  correct: 0
+  timeForPressing: 5
+  startShirking: 0
 --- !u!58 &-7340472741043714196
 CircleCollider2D:
   m_ObjectHideFlags: 0

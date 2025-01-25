@@ -1,48 +1,47 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class KeyNote : MonoBehaviour
 {
-    public KeyCode Key = KeyCode.A;
-    public bool Correct = false;
-    public float TimeForPressing = 5;
-    public bool StartShirking = false;
+    public KeyCode key = KeyCode.A;
+    public bool correct = false;
+    public float timeForPressing = 5;
+    public bool startShirking = false;
     float _timePassed = 0f;
 
     void Update()
     {
-        if (StartShirking)
+        if (startShirking)
         {
             _timePassed += Time.deltaTime;
-            transform.localScale = new((TimeForPressing - _timePassed) / TimeForPressing, (TimeForPressing - _timePassed) / TimeForPressing, 1f) ;
+            transform.localScale = new((timeForPressing - _timePassed) / timeForPressing, (timeForPressing - _timePassed) / timeForPressing, 1f) ;
         }
-        if(TimeForPressing - _timePassed <= 0)
+        if(timeForPressing - _timePassed <= 0)
         {
             SendAndDestroy();
         }
 
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
 
-        if (collision.gameObject.tag == "Mouse")
+    private void OnMouseOver()
+    {
+        if (Input.GetKeyDown(key))
         {
-            if (Input.GetKeyDown(Key))
-            {
-                Correct = true;
-                SendAndDestroy();
-            }
-            else if (Input.anyKeyDown && !Input.GetKeyDown(Key))
-            {
-                SendAndDestroy();
-            }
+            correct = true;
+            SendAndDestroy();
+        }
+        else if (Input.anyKeyDown && !Input.GetKeyDown(key))
+        {
+            SendAndDestroy();
         }
     }
 
     public void SendAndDestroy()
     {
-        GetComponentInParent<KeyNotesGame>()._keyNotes.Remove(gameObject);
+        GetComponentInParent<KeyNotesGame>().keyNotes.Remove(this);
         Destroy(gameObject);
     }
 

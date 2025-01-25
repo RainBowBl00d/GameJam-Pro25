@@ -1,43 +1,28 @@
 using System;
-using System.Collections.Generic;
-using AdaptiveAudio;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioSlider : MonoBehaviour
 {
+    [SerializeField] private AudioMixer mixer;
     [SerializeField] private String volumeVariable;
-    [SerializeField] private List<HorizontalAudioManager> horizontalAudioManagers;
-    [SerializeField] private List<VerticalAudioManager> verticalAudioManagers;
+    [SerializeField] private Slider slider;
+    [SerializeField] private float scale;
+    [SerializeField] private float sub;
     
-    public void SetVolume(float volume)
+    private void Awake()
     {
-        foreach (HorizontalAudioManager horizontalAudioManager in horizontalAudioManagers)
-        {
-            if (horizontalAudioManager.name.Equals(name))
-            {
-                
-            }
-            horizontalAudioManager.setVolume(volume);
-        }
-
-        foreach (VerticalAudioManager verticalAudioManager in verticalAudioManagers)
-        {
-            verticalAudioManager.SetVolume(volume);
-            
-        }
-    }
-    
-    private void Start()
-    {
-        SetVolume(PlayerPrefs.GetFloat(gameObject.name, 1));
+        float volume = PlayerPrefs.GetFloat(volumeVariable, 0);
+        slider.value = Mathf.Exp(Mathf.Exp((volume + sub) / scale));
     }
 
     public void OnChangeSlider(float value)
     {
-        float volume = Mathf.Log10(value);
-        Debug.Log(gameObject.name + " set to " + volume);
-        SetVolume(volume);
-        PlayerPrefs.SetFloat(gameObject.name, volume);
+        float volume = Mathf.Log(Mathf.Log(value)) * scale - sub;
+        Debug.Log(volumeVariable + " set to " + volume);
+        mixer.SetFloat(volumeVariable, volume);
+        PlayerPrefs.SetFloat(volumeVariable, volume);
         PlayerPrefs.Save();
     }
 }
