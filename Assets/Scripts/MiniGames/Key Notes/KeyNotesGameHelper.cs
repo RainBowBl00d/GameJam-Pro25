@@ -61,6 +61,7 @@ public class KeyNoteGameLevelStats
     
 
     public bool Completed { get; set; }
+    public int Lost { get; set; }
     public int Missed { get; set; }
     public int Correct {get; set;}
 }
