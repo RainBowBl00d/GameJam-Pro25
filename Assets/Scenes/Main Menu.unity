@@ -2270,6 +2270,14 @@ PrefabInstance:
       propertyPath: audioSourcePrefab
       value: 
       objectReference: {fileID: 3020391427147033406, guid: 0e0d8fa723daba941b51a27fa2b50444, type: 3}
+    - target: {fileID: 8930755600456142221, guid: 95182beccb1ac8d4c8256109968e910c, type: 3}
+      propertyPath: gameStateList.Array.data[0].trackList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930755600456142221, guid: 95182beccb1ac8d4c8256109968e910c, type: 3}
+      propertyPath: gameStateList.Array.data[0].trackList.Array.data[0].sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3044eb1757ea1d64aaa245821086ad73, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2774,12 +2782,16 @@ PrefabInstance:
       objectReference: {fileID: 3020391427147033406, guid: 0e0d8fa723daba941b51a27fa2b50444, type: 3}
     - target: {fileID: 839034559326953523, guid: 9e834c8ff9cd77142a280950586710fa, type: 3}
       propertyPath: gameStateList.Array.data[0].trackList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 839034559326953523, guid: 9e834c8ff9cd77142a280950586710fa, type: 3}
       propertyPath: gameStateList.Array.data[0].trackList.Array.data[1].name
       value: SFX 1
       objectReference: {fileID: 0}
+    - target: {fileID: 839034559326953523, guid: 9e834c8ff9cd77142a280950586710fa, type: 3}
+      propertyPath: gameStateList.Array.data[0].trackList.Array.data[0].sound
+      value: 
+      objectReference: {fileID: 8300000, guid: 73357d2ffd053474fb1277b4c0a07213, type: 3}
     - target: {fileID: 839034559326953523, guid: 9e834c8ff9cd77142a280950586710fa, type: 3}
       propertyPath: gameStateList.Array.data[0].trackList.Array.data[1].sound
       value: 
