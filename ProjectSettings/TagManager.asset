@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Mouse
   - Dodge
+  - Weapon_R
+  - Weapon_G
+  - Weapon_B
   layers:
   - Default
   - TransparentFX
