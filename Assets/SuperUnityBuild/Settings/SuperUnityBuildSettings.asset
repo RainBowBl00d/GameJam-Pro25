@@ -41,8 +41,8 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
-    buildCounter: 8
-    buildVersion: 1.0.0.8
+    buildCounter: 10
+    buildVersion: 1.0.0.10
     versionTemplate: 1.0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -69,6 +69,8 @@ MonoBehaviour:
         - fileGUID: 6fd0e72ffc85383449d18d5a54582bc3
           sceneActive: 1
         - fileGUID: c1999ee6807aabe45bc9b9fd4d6d8c0d
+          sceneActive: 1
+        - fileGUID: 6cde78bc3367d4e4aa3c61590cce17bc
           sceneActive: 1
   _platformList:
     platforms:
@@ -139,10 +141,7 @@ MonoBehaviour:
   configureEditor: 0
   filter:
     condition: 0
-    clauses:
-    - type: 0
-      comparison: 0
-      test: 
+    clauses: []
   pathToButlerExe: Assets\Butler\butler.exe
   nameOfItchUser: Rainbowblood
   nameOfItchGame: Game Jam Pro Tartu 25
