@@ -14,6 +14,7 @@ public class TextReveal : MonoBehaviour
     IEnumerator Start()
     {
         _text.maxVisibleCharacters = 0;
+        yield return new WaitForSecondsRealtime(0.1f);
         int count = _text.textInfo.characterCount;
         int iterator = 0;
 
@@ -33,6 +34,8 @@ public class TextReveal : MonoBehaviour
 
             yield return new WaitForSeconds(1f / speed);
         }
+
+        yield return new WaitForSecondsRealtime(0.2f);
 
         // Wait for a key press to proceed to the next step
         while (!Input.anyKeyDown)
