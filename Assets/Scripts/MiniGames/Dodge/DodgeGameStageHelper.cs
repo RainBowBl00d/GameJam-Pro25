@@ -106,7 +106,7 @@ public class DodgeGameStageHelper : MonoBehaviour
 public class DodgeGameLevelStats
 {
     public bool Completed { get; set; }
-    public int hits;
+    public int hits { get; set; }
     public float rOF;
     public float time;
     public float bulletSpeed;

@@ -11,6 +11,9 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
     #region Methods
+
+
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -22,6 +25,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
 
             s.source.outputAudioMixerGroup = s.mixerGroup;
+            
         }
     }
     public void Play(string sound)
@@ -36,7 +40,7 @@ public class AudioManager : MonoBehaviour
 
         s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
         s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
-
+        Debug.Log("Debug");
         s.source.Play();
     }
     #endregion

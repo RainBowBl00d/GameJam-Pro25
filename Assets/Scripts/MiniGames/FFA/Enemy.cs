@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            AudioManager.instance.Play("Miss");
             stats.Hits++;
             Destroy(gameObject);
         }
