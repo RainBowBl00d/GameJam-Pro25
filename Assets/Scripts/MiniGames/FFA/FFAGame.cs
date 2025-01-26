@@ -41,7 +41,7 @@ public class FFAGame : MonoBehaviour
 
     void RotateTowards()
     {
-        float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg - 90f;
+        float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg + 180f;
         Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * speed);
 
     }
@@ -62,6 +62,7 @@ public class FFAGame : MonoBehaviour
     IEnumerator EnemyRoutine(FFALevelStats stats)
     {
         running = true;
+        stats.Running = true;
         float elapsedTime = 0f;
 
         while (elapsedTime < stats.SpawnTime)
@@ -72,6 +73,7 @@ public class FFAGame : MonoBehaviour
             yield return new WaitForSeconds(1f / stats.SpawnRate);
         }
         running = false;
+        stats.Running = false;
         if (stats.Hits < stats.lives) stats.Completed = true;
     }
     void GenerateEnemy(FFALevelStats stats)

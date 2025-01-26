@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
 {
     public FFALevelStats stats;
     public GameObject player;
-    public HorizontalAudioManager manager;
     
 
     void Update()
@@ -44,7 +43,6 @@ public class Enemy : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            manager.StartPlaying();
             stats.Hits++;
             Destroy(gameObject);
         }
