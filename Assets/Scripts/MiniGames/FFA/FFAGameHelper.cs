@@ -25,7 +25,7 @@ public class FFAGameHelper : MonoBehaviour
         yield return new WaitForSecondsRealtime(4f);
         ani.SetActive(false);
         Level1();
-        while (levelStats1.Running) yield return new WaitForSecondsRealtime(1f);
+        while (levelStats1.Running) yield return new WaitForSecondsRealtime(2f);
         if (levelStats1.Completed)
         {
             ani.SetActive(true);
@@ -33,7 +33,7 @@ public class FFAGameHelper : MonoBehaviour
             yield return new WaitForSecondsRealtime(4f);
             ani.SetActive(false);
             Level2();
-            while (levelStats2.Running) yield return new WaitForSecondsRealtime(1f);
+            while (levelStats2.Running) yield return new WaitForSecondsRealtime(4f);
         }
         else
         {

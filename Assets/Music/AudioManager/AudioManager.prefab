@@ -44,6 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d04d30f74a8ff439216d0170132298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroups: {fileID: 0}
-  audioMixer: {fileID: 0}
-  sounds: []
+  mixerGroups: {fileID: 24300002, guid: 726a44bcc5e73ac4cbf806888a17ef69, type: 2}
+  audioMixer: {fileID: 24100000, guid: 726a44bcc5e73ac4cbf806888a17ef69, type: 2}
+  sounds:
+  - name: Hit
+    clip: {fileID: 8300000, guid: 3ee75859fb9c51a45aab2256a908e8a2, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 0
+    pitchVariance: 0.2
+    loop: 0
+    mixerGroup: {fileID: -8759220163803814764, guid: 726a44bcc5e73ac4cbf806888a17ef69, type: 2}
+    source: {fileID: 0}

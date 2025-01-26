@@ -10,14 +10,17 @@ public class Child : MonoBehaviour
     {
         if(colorIndex== 0  && collision.tag == "Weapon_R")
         {
+            AudioManager.instance.Play("Hit");
             Destroy(gameObject);
         }
         else if (colorIndex == 1 && collision.tag == "Weapon_G" )
         {
+            AudioManager.instance.Play("Hit");
             Destroy(gameObject);
         }
         else if (colorIndex == 2 && collision.tag == "Weapon_B" )
         {
+            AudioManager.instance.Play("Hit");
             Destroy(gameObject);
         }
 
