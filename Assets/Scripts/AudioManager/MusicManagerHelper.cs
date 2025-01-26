@@ -12,6 +12,8 @@ public class MusicManagerHelper : MonoBehaviour
 
         // Subscribe to KeyNotesGameHelper events
         KeyNotesGameHelper.OnLevelChanged += OnLevelChanged;
+        DodgeGameStageHelper.OnLevelChanged1 += OnLevelChanged;
+        FFAGameHelper.OnLevelChanged2 += OnLevelChanged;
     }
 
     private void OnDisable()
@@ -19,6 +21,9 @@ public class MusicManagerHelper : MonoBehaviour
         // Unsubscribe from events
         SceneManager.activeSceneChanged -= OnActiveSceneChanged;
         KeyNotesGameHelper.OnLevelChanged -= OnLevelChanged;
+        DodgeGameStageHelper.OnLevelChanged1 -= OnLevelChanged;
+        FFAGameHelper.OnLevelChanged2 -= OnLevelChanged;
+
     }
 
     private void OnActiveSceneChanged(Scene oldScene, Scene newScene)

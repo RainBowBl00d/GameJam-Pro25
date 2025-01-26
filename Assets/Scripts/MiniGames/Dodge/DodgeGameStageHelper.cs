@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 
 public class DodgeGameStageHelper : MonoBehaviour
 {
+    public static event Action<int> OnLevelChanged1; // Event to notify level changes
+
     [SerializeField] DodgeGame keyNoteGame;
     [SerializeField] GameObject button, ready, ani, tutorial;
     [SerializeField] private Timerandhits sliders;
@@ -26,6 +28,7 @@ public class DodgeGameStageHelper : MonoBehaviour
 
         ani.SetActive(true);
         animator.Play("New Animation");
+        NotifyLevelChanged(0);
         yield return new WaitForSecondsRealtime(4f);
         ani.SetActive(false);
         Level1();
@@ -35,6 +38,7 @@ public class DodgeGameStageHelper : MonoBehaviour
             HorizontalAudioManager.instance.CurrentGameState = 2;
             ani.SetActive(true);
             animator.Play("New Animation");
+            NotifyLevelChanged(1);
             yield return new WaitForSecondsRealtime(4f);
             ani.SetActive(false);
             Level2();
@@ -42,6 +46,7 @@ public class DodgeGameStageHelper : MonoBehaviour
         }
         else
         {
+            NotifyLevelChanged(-1);
             ready.SetActive(true);
             tutorial.SetActive(true);
         }
@@ -49,16 +54,16 @@ public class DodgeGameStageHelper : MonoBehaviour
         {
             ani.SetActive(true);
             animator.Play("New Animation");
+            NotifyLevelChanged(2);
             yield return new WaitForSecondsRealtime(4f);
             ani.SetActive(false);
             Level3();
             while (levelStats3.Running) yield return new WaitForSecondsRealtime(1f);
         }
-        else
-        {
-            ready.SetActive(true);
-            tutorial.SetActive(true);
-        }
+        NotifyLevelChanged(-1);
+        ready.SetActive(true);
+        tutorial.SetActive(true);
+        
         if (levelStats3.Completed)
         {
             button.SetActive(true);
@@ -99,6 +104,10 @@ public class DodgeGameStageHelper : MonoBehaviour
     {
         stats.hits = 0;
         stats.Completed = false;
+    }
+    private void NotifyLevelChanged(int level)
+    {
+        OnLevelChanged1?.Invoke(level); // Trigger event
     }
 }
 
