@@ -1,10 +1,7 @@
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class KeyNote : MonoBehaviour
 {
-    public HorizontalAudioManager good;
-    public HorizontalAudioManager bad;
     public KeyCode key = KeyCode.A;
     public bool correct = false;
     public float timeForPressing = 5;
@@ -37,7 +34,6 @@ public class KeyNote : MonoBehaviour
         else if (Input.anyKeyDown && !Input.GetKeyDown(key) && ! (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2)))
         {
             SendAndDestroy();
-            bad.StartPlaying();
         }
     }
 
