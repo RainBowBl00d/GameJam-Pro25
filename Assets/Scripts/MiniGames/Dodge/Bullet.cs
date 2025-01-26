@@ -10,8 +10,6 @@ public class Bullet : MonoBehaviour
     [Range(0f, 1f)]
     public float sineWeight = 0f;
 
-    public HorizontalAudioManager manager;
-
     private float timeOffset;
 
     public DodgeGameLevelStats stats;
@@ -43,7 +41,7 @@ public class Bullet : MonoBehaviour
         if(collision.tag == "Mouse")
         {
             stats.hits++;
-            manager.StartPlaying();
+            //manager.StartPlaying();
             Destroy(gameObject);
         }
     }
