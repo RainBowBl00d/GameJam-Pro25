@@ -43,7 +43,6 @@ public class DodgeGame : MonoBehaviour
 
     public void GenerateGame(DodgeGameLevelStats stats)
     {
-        if (running) return;
         StartCoroutine(SpawnBulletRoutine(stats));
     }
 

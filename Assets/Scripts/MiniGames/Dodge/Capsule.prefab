@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5342728443674712037}
   - component: {fileID: 4565905300129754982}
   - component: {fileID: 2285212029764432870}
+  - component: {fileID: 1793246932849417031}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2280542238072558130}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7460554, y: -0.18, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,9 +133,10 @@ MonoBehaviour:
   sineFrequency: 1
   sineWeight: 0
   stats:
+    hits: 0
     rOF: 0
-    bulletSpeed: 0
     time: 0
+    bulletSpeed: 0
     sineWeight: 0
     sineFrequency: 0
     sineAmplitude: 0
@@ -184,3 +186,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6388889, y: 0.6759259}
   m_EdgeRadius: 0
+--- !u!95 &1793246932849417031
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2280542238072558130}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 012d3c21e4d1aa245a16abf2e91229d7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

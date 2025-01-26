@@ -25,15 +25,16 @@ public class DodgeGameStageHelper : MonoBehaviour
         ResetValues(levelStats1);
 
         ani.SetActive(true);
-        animator.Play("countDownAnim");
+        animator.Play("New Animation");
         yield return new WaitForSecondsRealtime(4f);
         ani.SetActive(false);
         Level1();
         while (levelStats1.Running) yield return new WaitForSecondsRealtime(1f);
         if (levelStats1.Completed)
         {
+            HorizontalAudioManager.instance.CurrentGameState = 2;
             ani.SetActive(true);
-            animator.Play("countDownAnim");
+            animator.Play("New Animation");
             yield return new WaitForSecondsRealtime(4f);
             ani.SetActive(false);
             Level2();
@@ -47,7 +48,7 @@ public class DodgeGameStageHelper : MonoBehaviour
         if (levelStats2.Completed)
         {
             ani.SetActive(true);
-            animator.Play("countDownAnim");
+            animator.Play("New Animation");
             yield return new WaitForSecondsRealtime(4f);
             ani.SetActive(false);
             Level3();
@@ -92,7 +93,7 @@ public class DodgeGameStageHelper : MonoBehaviour
     }
     public void Next()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene("Stage 3");
     }
     void ResetValues(DodgeGameLevelStats stats)
     {
@@ -104,21 +105,14 @@ public class DodgeGameStageHelper : MonoBehaviour
 [System.Serializable]
 public class DodgeGameLevelStats
 {
-    public int sequenceLength;
-    public bool sortHorizontally;
-    public bool ascending;
-    public float timeToWaitBtwRealses;
-    public float hitFactorRequirement;
-    
-
     public bool Completed { get; set; }
-    public int hits { get; set; }
-    public float rOF { get; set; }
-    public float time {get; set;}
-    public float bulletSpeed {get; set;}
-    public float sineWeight {get; set;}
-    public float sineFrequency {get; set;}
-    public float sineAmplitude {get; set;}
-    public float DodgeFactor {get; set;}
+    public int hits;
+    public float rOF;
+    public float time;
+    public float bulletSpeed;
+    public float sineWeight;
+    public float sineFrequency;
+    public float sineAmplitude;
+    public float DodgeFactor;
     public bool Running { get; set; }
 }

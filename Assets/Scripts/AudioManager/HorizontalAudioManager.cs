@@ -29,6 +29,7 @@ public class HorizontalAudioManager : MonoBehaviour{
     
     void Awake()
     {
+        InstanceAwake();
         foreach (GameState gameState in gameStateList)
         {
             foreach (Track track in gameState.trackList)

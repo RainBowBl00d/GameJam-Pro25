@@ -89,7 +89,7 @@ public class KeyNotesGameHelper : MonoBehaviour
     }
     public void Next()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Stage 2");
     }
     void ResetValues(KeyNoteGameLevelStats stats)
     {
