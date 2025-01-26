@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class FFAGameHelper : MonoBehaviour
 {
+    public static event Action<int> OnLevelChanged2; // Event to notify level changes
+
+
     [SerializeField] FFALevelStats levelStats1, levelStats2, levelStats3;
     [SerializeField] FFAGame fFAGame;
     [SerializeField] GameObject button, ready, ani, tutorial;
@@ -22,6 +25,7 @@ public class FFAGameHelper : MonoBehaviour
 
         ani.SetActive(true);
         animator.Play("countDownAnim");
+        NotifyLevelChanged(0);
         yield return new WaitForSecondsRealtime(4f);
         ani.SetActive(false);
         Level1();
@@ -32,11 +36,13 @@ public class FFAGameHelper : MonoBehaviour
             animator.Play("countDownAnim");
             yield return new WaitForSecondsRealtime(4f);
             ani.SetActive(false);
+            NotifyLevelChanged(1);
             Level2();
             while (levelStats2.Running) yield return new WaitForSecondsRealtime(4f);
         }
         else
         {
+            NotifyLevelChanged(-1);
             ready.SetActive(true);
             tutorial.SetActive(true);
         }
@@ -44,16 +50,17 @@ public class FFAGameHelper : MonoBehaviour
         {
             ani.SetActive(true);
             animator.Play("countDownAnim");
+            NotifyLevelChanged(2);
             yield return new WaitForSecondsRealtime(4f);
             ani.SetActive(false);
             Level3();
             while (levelStats3.Running) yield return new WaitForSecondsRealtime(1f);
         }
-        else
-        {
-            ready.SetActive(true);
-            tutorial.SetActive(true);
-        }
+
+        NotifyLevelChanged(-1);
+        ready.SetActive(true);
+        tutorial.SetActive(true);
+        
         if (levelStats3.Completed)
         {
             button.SetActive(true);
@@ -92,6 +99,10 @@ public class FFAGameHelper : MonoBehaviour
     {
         stats.Hits = 0;
         stats.Completed = false;
+    }
+    private void NotifyLevelChanged(int level)
+    {
+        OnLevelChanged2?.Invoke(level); // Trigger event
     }
 }
 [System.Serializable]

@@ -76,6 +76,7 @@ public class KeyNotesGame : MonoBehaviour
             stats.Completed = true;
         }
         _isrunning = false;
+        Debug.Log("Debug");
         stats.Running = false;
     }
 
