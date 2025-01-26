@@ -52,6 +52,7 @@ public class KeyNotesGame : MonoBehaviour
     {
         if (_isrunning) return;
         _isrunning = true;
+        stats.running = true;
         Debug.Log($"Generate game: {stats.sequenceLength} {stats.sortHorizontally} {stats.ascending} {stats.timeToWaitBtwRealses}");
         List<Vector2> vector2s = GetRandomPosInBox(stats.sequenceLength, stats);
         Debug.Log("Got vectors");
@@ -62,19 +63,19 @@ public class KeyNotesGame : MonoBehaviour
     #region Helper
     private IEnumerator SpawnNotes(List<Vector2> positions, float timeToWait, KeyNoteGameLevelStats stats)
     {
-        stats.Missed = 0;
-        stats.Correct = 0;
         foreach (Vector2 position in positions)
         {
             StartCoroutine(GenNote(position, stats));
             yield return new WaitForSecondsRealtime(timeToWait);
         }
         while(keyNotes.Count != 0) yield return new WaitForSecondsRealtime(1f);
-        if (stats.Correct / (stats.Missed + stats.Correct - stats.Lost) >= stats.hitFactorRequirement)
+
+        if (((float)stats.Correct / (float)(stats.Missed + stats.Correct - stats.Lost)) >= stats.hitFactorRequirement)
         {
             stats.Completed = true;
         }
         _isrunning = false;
+        stats.running = false;
     }
 
     private IEnumerator GenNote(Vector2 position, KeyNoteGameLevelStats stats)
@@ -87,11 +88,8 @@ public class KeyNotesGame : MonoBehaviour
 
         string randomString = GetRandomString(letters);
 
-        if (keyNoteComponent != null)
-        {
-            keyNoteComponent.key = StringToKeyCodeConverter(randomString);
-        }
-
+        keyNoteComponent.key = StringToKeyCodeConverter(randomString);
+        
         TMP_Text textComponent = note.GetComponentInChildren<TMP_Text>();
         if (textComponent != null)
         {
@@ -104,7 +102,7 @@ public class KeyNotesGame : MonoBehaviour
     List<Vector2> GetRandomPosInBox(int length, KeyNoteGameLevelStats stats)
     {
         List<Vector2> vector2s = new List<Vector2>();
-        float minDistance = keyNote.GetComponent<CircleCollider2D>().radius * 2f; // Adjust based on your game design
+        float minDistance = keyNote.GetComponent<CircleCollider2D>().radius * 2f; 
 
         for (int x = 0; x < length; x++)
         {
@@ -127,7 +125,7 @@ public class KeyNotesGame : MonoBehaviour
                 }
 
                 attempts++;
-            } while (!isValidPosition && attempts < 1000); // Avoid infinite loops
+            } while (!isValidPosition && attempts < 1000); 
 
             if (isValidPosition)
             {

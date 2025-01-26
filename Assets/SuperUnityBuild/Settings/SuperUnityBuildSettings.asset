@@ -18,8 +18,8 @@ MonoBehaviour:
     openFolderPostBuild: 1
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
-    buildCounter: 10
-    buildVersion: 1.0.0.10
+    buildCounter: 11
+    buildVersion: 1.0.0.11
     versionTemplate: 1.0.0.$BUILD
     autoGenerate: 1
     syncWithPlayerSettings: 0
@@ -54,21 +54,37 @@ MonoBehaviour:
         - fileGUID: 4bf70bd5d7d3e114b8e00e677f3d178c
           sceneActive: 1
   _platformList:
-    platforms: []
+    platforms:
+    - {fileID: 8558439617557676312}
   _projectConfigurations:
     configSet:
-      _Buckets: ffffffffffffffff00000000
-      _HashCodes: 0d4e99340000000000000000
-      _Next: ffffffff0000000000000000
-      _Count: 1
-      _Version: 1
+      _Buckets: ffffffffffffffffffffffff0200000003000000ffffffffffffffff
+      _HashCodes: 20de535739f6d32775cc3a660d4e9934000000000000000000000000
+      _Next: ffffffff00000000ffffffff01000000000000000000000000000000
+      _Count: 4
+      _Version: 4
       _FreeList: -1
       _FreeCount: 0
       _Keys:
+      - Debug/WebGL/Player/IL2CPP
+      - Debug/WebGL/Player
+      - Debug/WebGL
       - Debug
       - 
       - 
+      - 
       _Values:
+      - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Debug/WebGL/Player/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Debug/WebGL/Player
+      - enabled: 1
+        childKeys:
+        - Debug/WebGL
       - enabled: 1
         childKeys: []
       - enabled: 1
@@ -114,6 +130,34 @@ MonoBehaviour:
   showUploadProgress: 1
   itchChannelOverride: 
 --- !u!114 &6157346644253036337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acaf75cc66fc934ea46bf602fc7c245, type: 3}
+  m_Name: WebGL
+  m_EditorClassIdentifier: 
+  enabled: 1
+  distributionList:
+    distributions: []
+  targets:
+  - type: 20
+    name: Player
+    enabled: 1
+    binaryNameFormat: '{0}'
+    subtarget: 0
+  variants: []
+  scriptingBackends:
+  - scriptingImplementation: 1
+    name: IL2CPP
+    enabled: 1
+  platformName: WebGL
+  targetGroup: 13
+--- !u!114 &8558439617557676312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -139,7 +139,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.0.0.10
+  bundleVersion: 1.0.0.11
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -163,12 +163,12 @@ PlayerSettings:
   applicationIdentifier:
     WebGL: com.DefaultCompany.GameJam-Pro-25
   buildNumber:
-    Standalone: 19
+    Standalone: 20
     VisionOS: 0
-    iPhone: 19
+    iPhone: 20
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 20
+  AndroidBundleVersionCode: 21
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

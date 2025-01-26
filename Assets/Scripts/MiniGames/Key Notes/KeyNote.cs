@@ -5,7 +5,7 @@ public class KeyNote : MonoBehaviour
 {
     public HorizontalAudioManager good;
     public HorizontalAudioManager bad;
-    public KeyCode key = KeyCode.A;
+    public KeyCode key;
     public bool correct = false;
     public float timeForPressing = 5;
     public bool startShirking = false;
@@ -29,8 +29,10 @@ public class KeyNote : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
+        Debug.Log(Input.GetKeyDown(key));
         if (Input.GetKeyDown(key) && collider.tag ==  "Mouse")
         {
+            Debug.Log("In Here");
             correct = true;
             SendAndDestroy();
             good.StartPlaying();
