@@ -41,9 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7715134643069441954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 934dd9bf11874aa4481beabe0ff3d240, type: 3}
+  m_Script: {fileID: 11500000, guid: f3d04d30f74a8ff439216d0170132298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroups: {fileID: 24300002, guid: 20ec591ce81b52a499c2d9e67eb62884, type: 2}
-  audioMixer: {fileID: 24100000, guid: 20ec591ce81b52a499c2d9e67eb62884, type: 2}
+  mixerGroups: {fileID: 0}
+  audioMixer: {fileID: 0}
   sounds: []
