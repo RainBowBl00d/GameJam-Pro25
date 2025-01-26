@@ -1,25 +1,72 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class KeyNotesGameHelper : MonoBehaviour
 {
     [SerializeField] KeyNotesGame keyNoteGame;
-    [SerializeField] GameObject button;
+    [SerializeField] GameObject button, ready, ani, tutorial;
     [SerializeField] private ProgressSlider slider;
+    [SerializeField] Animator animator;
 
     [SerializeField]KeyNoteGameLevelStats levelStats1, levelStats2, levelStats3;
 
-    public void Level1()
+    public void Ready()
+    {
+        StartCoroutine(RoundManage());
+    }
+    IEnumerator RoundManage() 
+    {
+        ResetValues(levelStats3);
+        ResetValues(levelStats2);
+        ResetValues(levelStats1);
+
+        ani.SetActive(true);
+        animator.Play("countDownAnim");
+        yield return new WaitForSecondsRealtime(4f);
+        ani.SetActive(false);
+        Level1();
+        while (levelStats1.Running) yield return new WaitForSecondsRealtime(1f);
+        if (levelStats1.Completed)
+        {
+            ani.SetActive(true);
+            animator.Play("countDownAnim");
+            yield return new WaitForSecondsRealtime(4f);
+            ani.SetActive(false);
+            Level2();
+            while (levelStats2.Running) yield return new WaitForSecondsRealtime(1f);
+        }
+        else
+        {
+            ready.SetActive(true);
+            tutorial.SetActive(true);
+        }
+        if (levelStats2.Completed)
+        {
+            ani.SetActive(true);
+            animator.Play("countDownAnim");
+            yield return new WaitForSecondsRealtime(4f);
+            ani.SetActive(false);
+            Level3();
+            while (levelStats3.Running) yield return new WaitForSecondsRealtime(1f);
+        }
+        else
+        {
+            ready.SetActive(true);
+            tutorial.SetActive(true);
+        }
+        if (levelStats3.Completed)
+        {
+            button.SetActive(true);
+        }
+    }
+
+    void Level1()
     {
         keyNoteGame.GenerateMiniGame(levelStats1);
         slider.StartGame(levelStats1);
     }
-    public void Level2()
+    void Level2()
     {
         if (!levelStats1.Completed )
         {
@@ -29,7 +76,7 @@ public class KeyNotesGameHelper : MonoBehaviour
         keyNoteGame.GenerateMiniGame(levelStats2);
         slider.StartGame(levelStats2);
     }
-    public void Level3()
+    void Level3()
     {
         if (!levelStats2.Completed )
         {
@@ -42,12 +89,14 @@ public class KeyNotesGameHelper : MonoBehaviour
     }
     public void Next()
     {
-        if (!levelStats3.Completed )
-        {
-            Debug.Log("Level 3 unCompleted");
-            return;
-        }
-        SceneManager.LoadScene(7);
+        SceneManager.LoadScene(4);
+    }
+    void ResetValues(KeyNoteGameLevelStats stats)
+    {
+        stats.Correct = 0;
+        stats.Missed = 0;
+        stats.Lost = 0;
+        stats.Completed = false;
     }
 }
 [System.Serializable]
@@ -64,4 +113,5 @@ public class KeyNoteGameLevelStats
     public int Lost { get; set; }
     public int Missed { get; set; }
     public int Correct {get; set;}
+    public bool Running { get; set; }
 }

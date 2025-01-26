@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 108
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,10 +115,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 730
+        width: 758.25
         height: 978
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: kratt_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 737
+        x: 758
         y: 0
-        width: 742
+        width: 758.25
         height: 978
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,13 +155,13 @@ TextureImporter:
       name: kratt_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1489
+        x: 1516
         y: 0
-        width: 744
+        width: 729
         height: 978
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 0, z: 6, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -176,13 +176,13 @@ TextureImporter:
       name: kratt_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 2218
+        x: 2245
         y: 0
-        width: 763
+        width: 788
         height: 978
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 23, y: 0, z: 0, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

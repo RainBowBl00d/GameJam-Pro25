@@ -52,6 +52,7 @@ public class KeyNotesGame : MonoBehaviour
     {
         if (_isrunning) return;
         _isrunning = true;
+        stats.Running = true;
         Debug.Log($"Generate game: {stats.sequenceLength} {stats.sortHorizontally} {stats.ascending} {stats.timeToWaitBtwRealses}");
         List<Vector2> vector2s = GetRandomPosInBox(stats.sequenceLength, stats);
         Debug.Log("Got vectors");
@@ -70,11 +71,12 @@ public class KeyNotesGame : MonoBehaviour
             yield return new WaitForSecondsRealtime(timeToWait);
         }
         while(keyNotes.Count != 0) yield return new WaitForSecondsRealtime(1f);
-        if (stats.Correct / (stats.Missed + stats.Correct - stats.Lost) >= stats.hitFactorRequirement)
+        if ((float)stats.Correct / (float)(stats.Missed + stats.Correct - stats.Lost) >= stats.hitFactorRequirement)
         {
             stats.Completed = true;
         }
         _isrunning = false;
+        stats.Running = false;
     }
 
     private IEnumerator GenNote(Vector2 position, KeyNoteGameLevelStats stats)
@@ -183,7 +185,7 @@ public class KeyNotesGame : MonoBehaviour
     }
     void ReorderOverlappingNotes()
     {
-        float minDistance = 0.5f; // Same as in GetRandomPosInBox
+        float minDistance = 3f; // Same as in GetRandomPosInBox
         List<GameObject> nonOverlapping = new List<GameObject>();
         List<GameObject> overlapping = new List<GameObject>();
 
