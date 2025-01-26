@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class FFAGameHelper : MonoBehaviour
     }
     public void Level3()
     {
-        if (!levelStats3.Completed)
+        if (!levelStats2.Completed)
         {
             Debug.Log("Level 2 unCompleted");
             return;
@@ -46,10 +47,10 @@ public class FFAGameHelper : MonoBehaviour
 [System.Serializable]
 public class FFALevelStats
 {
-    public int SpawnRate;
+    public float SpawnRate;
     public int MaxLayers;
-    public int EnemySpeed;
-    public int SpawnTime;
+    public float EnemySpeed;
+    public float SpawnTime;
     public int lives;
 
     public bool Completed { get; set; }

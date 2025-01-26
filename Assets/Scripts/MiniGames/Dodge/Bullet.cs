@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Bullet : MonoBehaviour
 {
@@ -7,7 +8,9 @@ public class Bullet : MonoBehaviour
     public float sineAmplitude = 1f; 
     public float sineFrequency = 1f;
     [Range(0f, 1f)]
-    public float sineWeight = 0f; 
+    public float sineWeight = 0f;
+
+    public HorizontalAudioManager manager;
 
     private float timeOffset;
 
@@ -40,6 +43,7 @@ public class Bullet : MonoBehaviour
         if(collision.tag == "Mouse")
         {
             stats.hits++;
+            manager.StartPlaying();
             Destroy(gameObject);
         }
     }

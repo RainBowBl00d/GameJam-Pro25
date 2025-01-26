@@ -8,6 +8,7 @@ public class FFAGame : MonoBehaviour
     [SerializeField] GameObject Weapon1_O, Weapon2_O, Weapon3_O;
     [SerializeField] CircleCollider2D circle;
     [SerializeField] GameObject Enemy_R, Enemy_B, Enemy_G, Enemy_Pre;
+    public float speed;
 
     bool running;
 
@@ -41,7 +42,7 @@ public class FFAGame : MonoBehaviour
     void RotateTowards()
     {
         float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg - 90f;
-        Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * 5f);
+        Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation, Quaternion.Euler(0, 0, angle), Time.deltaTime * speed);
 
     }
 

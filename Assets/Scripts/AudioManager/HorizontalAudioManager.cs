@@ -133,6 +133,16 @@ public class HorizontalAudioManager : MonoBehaviour{
         }
         throw new System.Exception("GameState inexistente");
     }
+    
+    public static HorizontalAudioManager instance;
+    void InstanceAwake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else Destroy(gameObject);
+    }
 }
 
 public enum WhenTrackFinishes{

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f8ba4e7f750ee04d88779dfcfc9baf0
+guid: 78c331b04c346494588f1ef757ea0a93
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,85 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: libahunt_spritesheet_0
+      name: stage2_cursor_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 847.5
-        height: 978
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 168
+        height: 160
+      alignment: 9
+      pivot: {x: 0.51418483, y: 0.52680963}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61ede1fb522f0784698eedfbccef2b0e
-      internalID: 245568665
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: libahunt_spritesheet_1
-      rect:
-        serializedVersion: 2
-        x: 847
-        y: 0
-        width: 847.5
-        height: 978
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4d3efab4b9442c348a8b428ef48d70b3
-      internalID: 216993648
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: libahunt_spritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 1694
-        y: 0
-        width: 847.5
-        height: 978
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78a726f891f2b924783d8b550838c62e
-      internalID: -945090503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: libahunt_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 2541
-        y: 0
-        width: 847.5
-        height: 978
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 20bf0037844f82d4da40079849cff0c0
-      internalID: -979809585
+      spriteID: e168336a7654111439b59a0c6c878f8b
+      internalID: 1564175776
       vertices: []
       indices: 
       edges: []
@@ -204,10 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      libahunt_spritesheet_0: 245568665
-      libahunt_spritesheet_1: 216993648
-      libahunt_spritesheet_2: -945090503
-      libahunt_spritesheet_3: -979809585
+      stage2_cursor_0: 1564175776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

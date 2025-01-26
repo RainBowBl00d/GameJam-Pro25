@@ -33,7 +33,6 @@ public class KeyNote : MonoBehaviour
         {
             correct = true;
             SendAndDestroy();
-            good.StartPlaying();
         }
         else if (Input.anyKeyDown && !Input.GetKeyDown(key) && ! (Input.GetMouseButton(0) || Input.GetMouseButton(1) || Input.GetMouseButton(2)))
         {
